@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       const token = "YOUR_BEARER_TOKEN_HERE"; // Ganti dengan token yang valid
   
-      fetch("http://localhost:8080/auth/login", {
+      fetch("https://kosconnect-server.vercel.app/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,5 +36,4 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error:', error);
       });
     });
-  });
-  
+});
