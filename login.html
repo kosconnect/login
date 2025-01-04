@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - KosConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet" />
+
+  <!-- FA Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="login.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="left">
+
+      <img src="/img/login.png" alt="Welcome Image" />
+    </div>
+    <div class="right">
+      <h1>KosConnect</h1>
+      <h2>Masuk</h2>
+      <form action="/login" method="POST">
+        <div class="cancel-btn-container">
+          <a href="https://kosconnect.github.io/" class="cancel-btn">
+              <i class="fa-solid fa-circle-xmark"></i>
+          </a> <!-- Circle X Mark Icon -->
+      </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Masukkan email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Kata Sandi</label>
+          <input type="password" id="password" name="password" placeholder="Masukkan kata sandi" required />
+        </div>
+        <button type="submit" class="btn">Masuk</button>
+      </form>
+      <div class="footer">Belum punya akun? <a href="/auth/register.html">Daftar Sekarang</a></div>
+    </div>
+  </div>
+</body>
+
+</html>
