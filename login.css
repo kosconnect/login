@@ -136,7 +136,7 @@ body {
 
 .cancel-btn-container {
     position: absolute;
-    top: -195px;
+    top: -170px;
     right: -30px;
   }
   
@@ -153,4 +153,46 @@ body {
   form {
     position: relative; /* Agar cancel-btn bisa diatur absolut */
   }
+  .btn-google {
+    background-color: #fff;
+    color: #555;
+    padding: 10px 15px;
+    width: 100%;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.btn-google img {
+    width: 25px;
+    height: 25px;
+}
+
+.btn-google:hover {
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.line-container {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
   
+  hr {
+    width: 150px; /* Sesuaikan lebar garis sesuai keinginan */
+    border: 1px solid #ccc; /* Sesuaikan warna dan ketebalan garis */
+    display: inline-block;
+  }
+  
+  span {
+    position: relative;
+    top: 3px; /* Sesuaikan posisi vertikal teks */
+  }
