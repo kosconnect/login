@@ -57,12 +57,21 @@ function handleGoogleSignIn() {
     "https://kosconnect-server.vercel.app/auth/google/login";
 }
 
-// Fungsi untuk menangani respons login
+// Fungsi untuk menyimpan token ke cookie
+const setCookie = (name, value, days) => {
+  const date = new Date();
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000); // Konversi hari ke milidetik
+  const expires = "expires=" + date.toUTCString();
+  document.cookie = `${name}=${value};${expires};path=/;Secure;SameSite=Strict`; 
+};
+
+
+// Contoh penggunaan dalam handleLoginResponse
 const handleLoginResponse = async (response) => {
   try {
     if (!response.ok) {
       const errorData = await response.json();
-      alert("Login gagal: " + errorData.error || "Terjadi kesalahan.");
+      alert("Login gagal: " + (errorData.error || "Terjadi kesalahan."));
       return;
     }
 
@@ -70,9 +79,9 @@ const handleLoginResponse = async (response) => {
     const data = await response.json();
     const { message, token, role, redirectURL } = data;
 
-    // Simpan token ke LocalStorage atau Cookies (opsional)
+    // Simpan token ke Cookie
     if (token) {
-      localStorage.setItem("authToken", token); // Simpan ke localStorage
+      setCookie("authToken", token, 7); // Simpan token selama 7 hari
     }
 
     // Tampilkan pesan berhasil
@@ -80,7 +89,7 @@ const handleLoginResponse = async (response) => {
 
     // Redirect ke URL yang sesuai
     if (redirectURL) {
-      window.location.href = redirectURL;
+      window.location.href = redirectURL; // Redirect pengguna
     } else {
       alert("Redirect URL tidak ditemukan. Harap hubungi admin.");
     }
@@ -90,19 +99,19 @@ const handleLoginResponse = async (response) => {
   }
 };
 
-// Contoh penggunaan saat login berhasil
-fetch("https://kosconnect-server.vercel.app/auth/callback", {
-  method: "GET", // atau GET, tergantung endpoint backend
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    state: "stateParameter", // ganti dengan nilai sebenarnya
-    code: "authorizationCode", // ganti dengan kode sebenarnya
-  }),
-})
-  .then(handleLoginResponse)
-  .catch((error) => {
-    console.error("Login request failed:", error);
-    alert("Terjadi kesalahan saat menghubungi server.");
-  });
+// // Contoh penggunaan saat login berhasil
+// fetch("https://kosconnect-server.vercel.app/auth/callback", {
+//   method: "GET", // atau GET, tergantung endpoint backend
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify({
+//     state: "stateParameter", // ganti dengan nilai sebenarnya
+//     code: "authorizationCode", // ganti dengan kode sebenarnya
+//   }),
+// })
+//   .then(handleLoginResponse)
+//   .catch((error) => {
+//     console.error("Login request failed:", error);
+//     alert("Terjadi kesalahan saat menghubungi server.");
+//   });
