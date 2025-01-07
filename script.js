@@ -47,53 +47,53 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "https://kosconnect-server.vercel.app/auth/google/login";
   }
   
-  // Fungsi untuk menyimpan cookie dengan parameter aman
-  const setCookie = (name, value, days) => {
-    const date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = `${name}=${value};${expires};path=/;Secure;SameSite=Strict`;
-  };
+//   // Fungsi untuk menyimpan cookie dengan parameter aman
+//   const setCookie = (name, value, days) => {
+//     const date = new Date();
+//     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+//     const expires = "expires=" + date.toUTCString();
+//     document.cookie = `${name}=${value};${expires};path=/;Secure;SameSite=Strict`;
+//   };
   
-  // Fungsi untuk redirect berdasarkan role pengguna
-  const redirectBasedOnRole = (role) => {
-    let redirectURL = "https://kosconnect.github.io/";
-    if (role === "owner") {
-      redirectURL = "https://kosconnect.github.io/dashboard-owner";
-    } else if (role === "admin") {
-      redirectURL = "https://kosconnect.github.io/dashboard-admin";
-    }
-    window.location.href = redirectURL;
-  };
+//   // Fungsi untuk redirect berdasarkan role pengguna
+//   const redirectBasedOnRole = (role) => {
+//     let redirectURL = "https://kosconnect.github.io/";
+//     if (role === "owner") {
+//       redirectURL = "https://kosconnect.github.io/dashboard-owner";
+//     } else if (role === "admin") {
+//       redirectURL = "https://kosconnect.github.io/dashboard-admin";
+//     }
+//     window.location.href = redirectURL;
+//   };
   
-  // Fungsi untuk memproses respons login dari backend
-  const handleLoginResponse = async (response) => {
-    try {
-      if (!response.ok) {
-        const errorData = await response.json();
-        alert("Login gagal: " + (errorData.error || "Terjadi kesalahan."));
-        return;
-      }
+//   // Fungsi untuk memproses respons login dari backend
+//   const handleLoginResponse = async (response) => {
+//     try {
+//       if (!response.ok) {
+//         const errorData = await response.json();
+//         alert("Login gagal: " + (errorData.error || "Terjadi kesalahan."));
+//         return;
+//       }
   
-      const data = await response.json();
-      const { message, token, role, redirectURL } = data;
+//       const data = await response.json();
+//       const { message, token, role, redirectURL } = data;
   
-      // Simpan token ke cookie
-      if (token) {
-        setCookie("authToken", token, 7); // Simpan token selama 7 hari
-      }
+//       // Simpan token ke cookie
+//       if (token) {
+//         setCookie("authToken", token, 7); // Simpan token selama 7 hari
+//       }
   
-      // Tampilkan pesan berhasil
-      alert(message);
+//       // Tampilkan pesan berhasil
+//       alert(message);
   
-      // Redirect berdasarkan URL dari backend
-      if (redirectURL) {
-        window.location.href = redirectURL;
-      } else {
-        redirectBasedOnRole(role);
-      }
-    } catch (error) {
-      console.error("Error handling login response:", error);
-      alert("Terjadi kesalahan saat memproses respons login.");
-    }
-  };  
+//       // Redirect berdasarkan URL dari backend
+//       if (redirectURL) {
+//         window.location.href = redirectURL;
+//       } else {
+//         redirectBasedOnRole(role);
+//       }
+//     } catch (error) {
+//       console.error("Error handling login response:", error);
+//       alert("Terjadi kesalahan saat memproses respons login.");
+//     }
+//   };  
