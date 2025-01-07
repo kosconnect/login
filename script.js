@@ -56,3 +56,53 @@ function handleGoogleSignIn() {
   window.location.href =
     "https://kosconnect-server.vercel.app/auth/google/login";
 }
+
+// Fungsi untuk menangani respons login
+const handleLoginResponse = async (response) => {
+  try {
+    if (!response.ok) {
+      const errorData = await response.json();
+      alert("Login gagal: " + errorData.error || "Terjadi kesalahan.");
+      return;
+    }
+
+    // Parse response JSON
+    const data = await response.json();
+    const { message, token, role, redirectURL } = data;
+
+    // Simpan token ke LocalStorage atau Cookies (opsional)
+    if (token) {
+      localStorage.setItem("authToken", token); // Simpan ke localStorage
+    }
+
+    // Tampilkan pesan berhasil
+    alert(message);
+
+    // Redirect ke URL yang sesuai
+    if (redirectURL) {
+      window.location.href = redirectURL;
+    } else {
+      alert("Redirect URL tidak ditemukan. Harap hubungi admin.");
+    }
+  } catch (error) {
+    console.error("Error handling login response:", error);
+    alert("Terjadi kesalahan saat memproses respons login.");
+  }
+};
+
+// Contoh penggunaan saat login berhasil
+fetch("https://kosconnect-server.vercel.app/auth/callback", {
+  method: "GET", // atau GET, tergantung endpoint backend
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    state: "stateParameter", // ganti dengan nilai sebenarnya
+    code: "authorizationCode", // ganti dengan kode sebenarnya
+  }),
+})
+  .then(handleLoginResponse)
+  .catch((error) => {
+    console.error("Login request failed:", error);
+    alert("Terjadi kesalahan saat menghubungi server.");
+  });
