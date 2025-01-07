@@ -42,20 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   
-  async function handleGoogleSignIn() {
-    try {
-      // Buat request ke backend Google OAuth
-      const response = await fetch("https://kosconnect-server.vercel.app/auth/google/login", {
-        method: "GET",
-        credentials: "include", // Agar cookie diterima dari backend
-      });
-  
-      // Tangani respons login
-      await handleLoginResponse(response);
-    } catch (error) {
-      console.error("Error during Google sign-in:", error);
-      alert("Terjadi kesalahan saat proses login Google.");
-    }
+  function handleGoogleSignIn() {
+    // Redirect pengguna ke endpoint Google OAuth di backend
+    window.location.href = "https://kosconnect-server.vercel.app/auth/google/login";
   }
   
   // Fungsi untuk menyimpan cookie dengan parameter aman
