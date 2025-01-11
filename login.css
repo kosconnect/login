@@ -13,8 +13,25 @@ body {
     height: 100vh;
     color: #fff;
 }
+/* Cancel Button */
+.cancel-btn-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10; /* Supaya di atas elemen lain */
+}
 
+.cancel-btn {
+    font-size: 24px;
+    color: #005f73;
+    text-decoration: none;
+}
+
+.cancel-btn:hover {
+    color: #003f53;
+}
 .container {
+    position: relative;
     display: flex;
     background: #fff;
     border-radius: 10px;
@@ -133,22 +150,6 @@ body {
 .footer a:hover {
     text-decoration: underline;
 }
-
-.cancel-btn-container {
-    position: absolute;
-    top: -170px;
-    right: -30px;
-  }
-  
-  .cancel-btn {
-    font-size: 24px;
-    color: #20B2AA ;
-    text-decoration: none;
-  }
-  
-  .cancel-btn:hover {
-    color: #1CBB9C ;
-  }
 
   form {
     position: relative; /* Agar cancel-btn bisa diatur absolut */
