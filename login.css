@@ -23,12 +23,12 @@ body {
 
 .cancel-btn {
     font-size: 24px;
-    color: #005f73;
+    color: #20B2AA;
     text-decoration: none;
 }
 
 .cancel-btn:hover {
-    color: #003f53;
+    color: #1CBB9C;
 }
 .container {
     position: relative;
