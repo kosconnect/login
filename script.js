@@ -98,3 +98,18 @@ const handleLoginResponse = async (response) => {
     alert("Terjadi kesalahan saat memproses respons login.");
   }
 };
+
+// script untuk user setelah berhasil verifikasi email
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const verified = urlParams.get('verified');
+
+  if (verified === 'true') {
+      Swal.fire({
+          title: 'Email Terverifikasi!',
+          text: 'Email Anda berhasil diverifikasi. Silakan login untuk melanjutkan.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+      });
+  }
+});
