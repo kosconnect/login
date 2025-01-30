@@ -113,3 +113,18 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 });
+
+ // Password visibility toggle
+  document.addEventListener("DOMContentLoaded", () => {
+      const togglePassword = document.querySelector(".toggle-password");
+      const passwordInput = document.querySelector("#password");
+  
+      togglePassword.addEventListener("click", () => {
+        const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+        passwordInput.setAttribute("type", type);
+  
+        // Ganti ikon mata
+        togglePassword.classList.toggle("fa-eye");
+        togglePassword.classList.toggle("fa-eye-slash");
+      });
+  });

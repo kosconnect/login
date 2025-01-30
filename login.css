@@ -82,6 +82,31 @@ body {
     text-align: center;
 }
 
+/* Password Visibility Toggle */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px;
+    /* Ruang untuk ikon mata */
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #005f73;
+}
+
+.password-container .toggle-password:hover {
+    color: #003f53;
+}
+
 .form-group {
     margin-bottom: 10px;
 }
