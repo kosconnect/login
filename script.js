@@ -117,3 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
     togglePassword.classList.toggle("fa-eye-slash");
   });
 });
+
+function handleGoogleSignIn() {
+  // Redirect pengguna ke endpoint Google OAuth di backend
+  window.location.href =
+    "https://kosconnect-server.vercel.app/auth/google/login";
+}
